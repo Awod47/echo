@@ -1,10 +1,12 @@
 import { Router } from "express";
-import {logIn, logOut, signUp} from '../controllers/auth.controller.js'
+import {getMe, logIn, logOut, signUp} from '../controllers/auth.controller.js'
+import protectRoute from "../middleware/protectRoute.js";
 
 const router = Router()
 
-router.get('/signup', signUp)
-router.get('/login', logIn)
-router.get('/logout', logOut)
+router.post('/signup', signUp)
+router.post('/login', logIn)
+router.post('/logout', logOut)
+router.get('/user-check', protectRoute, getMe)
 
 export default router
