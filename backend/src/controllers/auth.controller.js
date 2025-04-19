@@ -90,7 +90,7 @@ export const logIn = async (req, res)=>{
 
     } catch (error) {
         console.log('error in the login controller', error)
-        res.status(500).json({error: 'internal server error'})
+        return res.status(500).json({error: 'internal server error'})
     }
 }
 
