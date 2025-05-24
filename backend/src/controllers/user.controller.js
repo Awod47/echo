@@ -4,13 +4,13 @@ import User from "../models/user.model.js"
 import bcrypt from "bcryptjs"
 
 export const getUserProfile =async(req, res) => {
-    const { username } = req.params.username
+    const username  = req.params.username
     try {
         const user = await User.findOne({username: username}).select('-password')
         if(!user){
             return res.status(404).json({error: 'user not found'})
         }
-        return res,status(200).json(user)
+        return res.status(200).json(user)
 
     } catch (error) {
         console.log('error in getUserProfile controller', error)
